@@ -1,10 +1,19 @@
-\documentclass{sig-alternate}
+\documentclass[10pt,journal,cspaper,compsoc]{IEEEtran}
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  \usepackage[dvips]{graphicx}
+\fi
+
 \usepackage{comment}
 \usepackage{listings}
 \usepackage{pgf}
 \usepackage{amsmath}
 \usepackage{subfigure}
 \usepackage{tikz}
+\usetikzlibrary{arrows,automata}
 
 \lstset{
   basicstyle = \ttfamily\scriptsize\color{black},%\bfseries
@@ -18,41 +27,42 @@
   numbers=left
 }
 
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+
+\newif\ifdraft
+\drafttrue
+%\draftfalse
+\ifdraft
+ \newcommand{\katznote}[1]{ {\textcolor{blue}    { ***Dan:      #1 }}}
+ \newcommand{\ketanote}[1]{{\textcolor{orange}    { ***Ketan:      #1 }}}
+ \newcommand{\note}[1]{ {\textcolor{red}    {\bf #1 }}}
+\else
+ \newcommand{\katznote}[1]{}
+ \newcommand{\ketanote}[1]{}
+ \newcommand{\note}[1]{}
+\fi
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
 \setlength\parindent{0pt}
 
-%\newif\ifdraft
-%\drafttrue
-%%\draftfalse
-%\ifdraft
-% \newcommand{\katznote}[1]{ {\textcolor{blue}    { ***Dan:      #1 }}}
-% \newcommand{\ketanote}[1]{{\textcolor{orange}    { ***Ketan:      #1 }}}
-% \newcommand{\note}[1]{ {\textcolor{red}    {\bf #1 }}}
-%\else
-% \newcommand{\katznote}[1]{}
-% \newcommand{\ketanote}[1]{}
-% \newcommand{\note}[1]{}
-%\fi
-%% correct bad hyphenation here
-%\hyphenation{op-tical net-works semi-conduc-tor}
-
 \begin{document}
+% can use linebreaks \\ within to get better formatting as desired
 \title{Evaluating Storage Systems for Scientific Data in the Cloud}
-\author{
-\alignauthor
-  Ketan Maheshwari$^\ast$ Justin M. Wozniak$^\ast$
-  Hao Yang$^\ddagger$ Daniel S. Katz$^\ast\dagger$ \\
-  Matei Ripeanu$^\ddagger$  
-  Victor Zavala$^\ast$ Michael Wilde$^\ast\dagger$ \\
-%  ~\\
-  \begin{tabular}{ccc}
-      \hspace{.14\linewidth} & \hspace{.14\linewidth} & \hspace{.14\linewidth}\\
-      $^\ast$\affaddr{Mathematics and Computer Science Division}  & 
-      $^\dagger$\affaddr{Computation Institute}  &
-      $^\ddagger$\affaddr{Dept. of Electrical and Computer Eng.} \\
-      \affaddr{Argonne National Laboratory} & \affaddr{University of Chicago} & \affaddr{University of British Columbia} \\
-      \affaddr{Argonne, IL USA} & \affaddr{Chicago, IL USA} & \affaddr{Vancouver, Ca}\\
-      \affaddr{ketan,wozniak,zavala,wilde@mcs.anl.gov} & \affaddr{dsk@ci.uchicago.edu} & \affaddr{yanghao0614,matei@ece.ubc.ca} \\
-  \end{tabular}
+% \title{Evaluation of global-scale programming and data storage techniques
+%        in cloud computing}
+
+\author{\IEEEauthorblockN{Ketan Maheshwari\IEEEauthorrefmark{1},
+Justin M. Wozniak\IEEEauthorrefmark{1},
+Hao Yang\IEEEauthorrefmark{2},\\
+Daniel S. Katz\IEEEauthorrefmark{3},
+Matei Ripeanu\IEEEauthorrefmark{2},
+Victor Zavala\IEEEauthorrefmark{3},
+Michael Wilde\IEEEauthorrefmark{1}\IEEEauthorrefmark{3}\\
+\IEEEauthorblockA{
+\IEEEauthorrefmark{1}MCS Division, Argonne National Laboratory, Argonne, IL 60439}\\
+\IEEEauthorrefmark{2}Department of Electrical and Computer Engineering,  University of British Columbia\\
+\IEEEauthorrefmark{3}Computation Institute,  University of Chicago \& Argonne National Laboratory}
 }
 
 \maketitle
@@ -87,8 +97,11 @@ driven approach.
 %TODO: Summarize conclusions/lessons
 %
 \end{abstract}
+\begin{IEEEkeywords}
+HPC, parallel computing, cloud, storage systems
+\end{IEEEkeywords}
 
-\keywords{HPC, parallel computing, cloud, global file systems}
+\IEEEpeerreviewmaketitle
 
 \section{Introduction}
 %TODO: Improve introduction, we're not talking about exascale
@@ -763,7 +776,7 @@ finding, and conclusions or recommendations expressed in this material are
 those of the authors and do not necessarily reflect the views of the National
 Science Foundation. 
 
-\bibliographystyle{abbrv}
-\bibliography{refshort}
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
 \end{document}
 
