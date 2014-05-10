@@ -13,6 +13,7 @@
 \usepackage{amsmath}
 \usepackage{subfigure}
 \usepackage{tikz}
+\usepackage{tikz-qtree}
 \usetikzlibrary{arrows,automata}
 
 \lstset{
@@ -186,6 +187,22 @@ system to support workflow applications.
 improved usability of the cloud computing model using tools well adapted to
 traditional tightly coupled systems such as HPC clusters. 
 \end{enumerate}
+
+% ===== 
+\tikzset{edge from parent/.style=
+{draw, edge from parent path={(\tikzparentnode.south)
+-- +(0,-8pt)
+-| (\tikzchildnode)}},
+blank/.style={draw=none}}
+\begin{tikzpicture}
+\matrix
+{
+\node{\Tree 
+ [.{the Cloud} 
+    [.Compute [.proc-speed  proc-type proc-count ] ] [.Network [.BW Latency] ] [.Storage [.Local EBS Remote-online Remote-offline ]]]};\\
+};           
+\end{tikzpicture}
+% ===== 
 
 While we touch upon the subject of cost, we consider it outside of the scope of
 this paper and do not analyze it in any detail. The rest of this paper is
