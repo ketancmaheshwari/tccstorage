@@ -1,0 +1,26 @@
+#!/bin/bash -x
+
+#./stream_sum/sum $mul $mC_file $mD_file $mE_file
+
+mul=$1
+finres="${@: -1}"
+tlast=$(($#-2))
+shift 1
+
+sum $mul $1 $2 inter.txt
+shift 2 
+
+for i in `seq 1 $#`
+do
+ first=$1
+ if [ $first == "bulksumres.dat" ]; then
+   cp inter.txt $finres
+   exit 0
+ fi
+ cp inter.txt tmp.txt
+ rm -f inter.txt
+ sum $mul $first tmp.txt inter.txt
+ shift 1
+done
+
+cp inter.txt $finres

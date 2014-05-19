@@ -1,0 +1,2 @@
+rm -rf *.log *.rlog *.d xworkflow-*-*-* workflow-*-*-* *.kml *.swiftx *.out output outdir logs hi.* _concurrent .swift/tmp
+

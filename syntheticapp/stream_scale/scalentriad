@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# scale $mul $mC_file $mD_file $coef
+# triad $mul $mC_file $mE_file $mF_file $coef
+
+mul=$1
+
+scaletriadin=$2
+triadin=$3
+scaleres=$4
+triadres=$5
+
+coeff=$6
+
+time -p scale $mul $scaletriadin $scaleres $coeff
+
+time -p triad $mul $scaletriadin $triadin $triadres $coeff

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.ci.uchicago.edu/swift/SwiftSites">
+ <pool handle="gordon">
+<!--<execution provider="coaster" jobmanager="local:pbs"/>-->
+   <execution provider="coaster" jobmanager="ssh-cl:pbs" url="trestles.sdsc.edu"/>
+   <filesystem provider="local" url="none" />
+   <profile namespace="globus" key="maxtime">601</profile>
+   <profile namespace="globus" key="maxWalltime">00:09:00</profile>
+   <profile namespace="globus" key="jobsPerNode">16</profile>
+   <profile namespace="globus" key="slots">1</profile>
+   <profile namespace="globus" key="project">anl109</profile>
+   <profile namespace="globus" key="ppn">32</profile>
+   <profile namespace="globus" key="nodeGranularity">1</profile>
+   <profile namespace="globus" key="maxnodes">1</profile>
+   <profile namespace="karajan" key="jobThrottle">2.15</profile>
+   <profile namespace="karajan" key="initialScore">10000</profile>
+   <workdirectory>/home/ketan/swift.work</workdirectory>
+ </pool>
+</config>

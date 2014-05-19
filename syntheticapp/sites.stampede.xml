@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.ci.uchicago.edu/swift/SwiftSites">
+ <pool handle="stampede">
+   <execution provider="coaster" jobmanager="ssh-cl:slurm" url="stampede.tacc.utexas.edu"/>
+   <filesystem provider="local" />
+   <profile namespace="globus"  key="jobsPerNode">1</profile>
+   <profile namespace="globus"  key="ppn">1</profile>
+   <profile namespace="globus"  key="maxTime">7500</profile>
+   <profile namespace="globus"  key="maxwalltime">00:10:00</profile>
+   <profile namespace="globus"  key="lowOverallocation">100</profile>
+   <profile namespace="globus"  key="highOverallocation">100</profile>
+   <profile namespace="globus"  key="queue">normal</profile>
+   <profile namespace="globus"  key="nodeGranularity">1</profile>
+   <profile namespace="globus"  key="maxNodes">1</profile>
+   <profile namespace="globus" key="slots">1</profile>
+   <profile namespace="globus"  key="project">TG-EAR130015</profile>
+   <profile namespace="karajan" key="jobThrottle">.3199</profile>
+   <profile namespace="karajan" key="initialScore">10000</profile>
+   <workdirectory>/tmp/{env.USER}/swift.work</workdirectory>
+  </pool>
+</config>

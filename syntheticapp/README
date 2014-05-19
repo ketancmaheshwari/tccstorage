@@ -1,0 +1,10 @@
+This is a synthetic workflow
+
+Execute it on a single node with workflow.py. You can modify it to scale it up
+
+matmat: dense matrix multiply (the input dimensions must be a multiply of 8)
+stream_sum, stream_scale, and stream_triad are three STREAM benchmarks, they each perform the operation of:
+    SCALE:      a(i) = q*b(i)               
+    SUM:        a(i) = b(i) + c(i)          
+    TRIAD:      a(i) = b(i) + q*c(i)        
+
