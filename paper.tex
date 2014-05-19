@@ -547,7 +547,20 @@ performance beyond 500MB~(fig~\ref{fig:raw_perf}). Consequently, we chose
 MosaStore for node-local aggregated storage for application measurements.
 
 \section{Synthetic Workflow Performance Evaluation}
+We use a synthetic application consisting of
+various computation and memory intensive tasks. The computation intensive task
+is matrix multiplication while the memory intensive tasks are array summation,
+scale, and triad operations from the stream benchmarks~\cite{Stream}.  The
+graph shown in Figure~\ref{fig:synthetic} shows the overall data flow of
+synthetic workflow. 
 
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[width=8cm]{figures/synthetic_combine.png}
+\caption{The synthetic workflow representation}
+\label{fig:synthetic}
+\end{center}
+\end{figure}
 
 \subsection{calibration}
 
