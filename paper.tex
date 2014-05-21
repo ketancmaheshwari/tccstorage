@@ -375,6 +375,8 @@ service as mountable file systems with a subset of common file operations. S3FS
 also implements a simple, local node caching mechanism to improve performance
 over that of raw S3 access.
 
+Amazon S3 offers lifecycle management for versioned objects: https://aws.amazon.com/blogs/aws/amazon-s3-lifecycle-management-update
+
 \subsection{Hadoop Distributed File System}
 The Hadoop Distributed File System (HDFS) is a high-throughput file system
 designed to store and process large amounts of data stored on cheap,
@@ -804,16 +806,19 @@ applications. Our work back the findings with application performance results
 as evidence and lays further motivation for usage of aggegated, node-local
 storage systems in the clouds.
 
-%Variants of Hadoop have been implemented for scientific
-%applications such as Marissa~\cite{marissa} addressing HDFS
-%accessibility and performance for applications that are not ported for
-%Java. Our approach differs from Hadoop in that we use the highly general
-%Swift programming model to generate and distribute tasks, while using
-%Swift-automated staging or ad hoc data access techniques depending on
-%the underlying storage system.  As shown in our application results,
-%this provides high levels of generality and flexibility with respect
-%to the workflow pattern, application domain, and underlying
-%infrastructure. 
+Recently developed systems for deduplication of data in the clous like
+liquid~\cite{liquid:2014} are closely related to our work.
+
+Variants of Hadoop have been implemented for scientific
+applications such as Marissa~\cite{marissa} addressing HDFS
+accessibility and performance for applications that are not ported for
+Java. Our approach differs from Hadoop in that we use the highly general
+Swift programming model to generate and distribute tasks, while using
+Swift-automated staging or ad hoc data access techniques depending on
+the underlying storage system.  As shown in our application results,
+this provides high levels of generality and flexibility with respect
+to the workflow pattern, application domain, and underlying
+infrastructure. 
 
 \section{Conclusions}\label{sec:concl}
 We evaluate two representative storage systems each from scientific and
