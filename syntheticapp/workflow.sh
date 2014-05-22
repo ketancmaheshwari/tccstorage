@@ -10,9 +10,9 @@
 #WA=3300 # generates 8M matrix
 #WB=3300
 
-HA=3000
-WA=4000
-WB=4000
+HA=$1
+WA=$2
+WB=$3
 
 mA_file=mA.dat
 mB_file=mB.dat
