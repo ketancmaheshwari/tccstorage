@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "globals.h"
 #include <memory.h>
+#include "../sysdetails/sysdetails.h"
 
 
 //    COPY:       a(i) = b(i)                 16              0
@@ -48,6 +49,7 @@ int main(int argc, char** argv)
     saveMatrix(argv[3], m, 1, size);
     free(a);
     free(m);
+    systamp();
     return 0;
 }
 

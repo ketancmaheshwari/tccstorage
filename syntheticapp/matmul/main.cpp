@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <memory.h>
 #include "globals.h"
+#include "../sysdetails/sysdetails.h"
 
 extern void computeGold(float* C, const float* A, const float* B, unsigned int hA, unsigned int wA, unsigned int wB);
 
@@ -26,6 +27,7 @@ int main(int argc, char** argv)
     free(h_A);
     free(h_B);
     free(h_C);
+    systamp();
     return 0;
 }
 

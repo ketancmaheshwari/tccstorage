@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "globals.h"
 #include <memory.h>
+#include "../sysdetails/sysdetails.h"
 
 
 //    COPY:       a(i) = b(i)                 16              0
@@ -49,6 +50,7 @@ int main(int argc, char** argv)
     free(a);
     free(b);
     free(m);
+    systamp();
     return 0;
 }
 

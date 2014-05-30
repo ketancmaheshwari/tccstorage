@@ -61,12 +61,12 @@ endif
 all: $(BINARY)
 
 $(BINARY): $(OBJ) $(TIMER_OBJ)
-	$(CPP) -o $@ $^ $(libs)
+	$(CPP) -o $@ $^ $(libs) ../sysdetails/sysdetails.o
 
 ifneq ($(TARGET_DIR),.)
 	mv -f $(patsubst %.cpp, %.o, $(wildcard $(CPP_SRC))) $(TARGET_DIR)/
 endif
-	$(CPP) $(patsubst %.cpp,$(TARGET_DIR)/%.o,$(wildcard $(CPP_SRC))) $(TIMER_OBJ) $(CFLAGS) -o $(TARGET_DIR)/$(BINARY)
+	$(CPP) $(patsubst %.cpp,$(TARGET_DIR)/%.o,$(wildcard $(CPP_SRC))) $(TIMER_OBJ) $(CFLAGS)  ../sysdetails/sysdetails.o -o $(TARGET_DIR)/$(BINARY)
 
 clean:
 	rm -f $(BINARY) *.o *.s
