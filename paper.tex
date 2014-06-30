@@ -865,3 +865,28 @@ Science Foundation.
 \bibliography{ref}
 \end{document}
 
+== Some Ideas ==
+Following is a collection of ideas from comments, discussions, reviews:
+
+-- Coherence
+The paper is 3 parts that aren’t really connected, except thematically. Coherence is lacking. Can we tie them together better through common experiments, such as running some of the applications on the worst and best bandwidth and latency cloud instances, to see what happens, and perhaps to run the applications using worse filesystems as well, and showing the differences? Can we identify/deduce cloud hotspots to place task and storage servers/coordinators and see performance difference? Perhaps use a synthetic workflow to tune data and compute. 
+
+-- Deeper Understanding
+A deeper understanding on runtime behavior of systems is missing. I think it would be valuable to answer questions like: How is the data stored and distributed once it enters the storage system? How much locality: how many remote calls per MB? How well the tasks and data are keeping up? Likely data is lagging behind tasks: by how much in each systems? How can we quantify and improve this? Can we analyze logs from a workflow execution to answer these questions? Transfer block size vs performance of storage systems? Separate I/O and execution time. This will address a major comment by reviewers: insight into results. Can we say a system is better than other in some circumstances? eg. FusionFS is better under A and B while Mosa is better under X and Y. Swift/T should be used when XYZ whereas T should be used when ABC.
+
+-- Stress Test
+How much stress can these system undergo in terms of handling large quantities of data given enough physical space? How well are they suited to data-intensive workflow style computations? Are they ready for BigData? How many cloud instances can run them without significant faults or performance degradation?
+
+-- Persistence
+Can the data be persisted in the system beyond a single run? Beyond the lifecycle of a VM?
+
+-- Cost and Prediction
+Comment about the savings in terms of monetary costs under different conditions. Model the experiments to give a prediction of cost ahead of time for experiments.
+
+-- Package and Release
+Package the system as a reusable cloud image and release it for users. The image would contain preinstalled, configured software tools (Swift T, K, Mosa, Fusion, HDFS, code for analysis, logging etc.) and application examples that others might find useful. Users can use any of the available combinations for their situation and requirements. With this, make a case for reuse and reproducibility of the work.
+
+-- Can this scenario be called RaaS? Resource as a service?
+
+
+

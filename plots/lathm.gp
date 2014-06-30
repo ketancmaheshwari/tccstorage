@@ -14,12 +14,12 @@ set tics norotate nooffset
 set tic scale 0
 
 # Color runs from white to green
-set palette rgbformula -7,2,-7
+#set palette rgbformula -7,2,-7
 #set palette rgbformula 34,35,36
 #set palette rgbformula 7,5,15
 #set palette rgbformula 3,11,6
 #set palette rgbformula 30,31,32
-#set palette rgbformula 33,13,10
+set palette rgbformula 33,13,10
 #7,5,15   ... traditional pm3d (black-blue-red-yellow)
 #3,11,6   ... green-red-violet
 #23,28,3  ... ocean (green-blue-white); try also all other permutations
