@@ -878,10 +878,12 @@ A deeper understanding on runtime behavior of systems is missing. I think it wou
 How much stress can these system undergo in terms of handling large quantities of data given enough physical space? How well are they suited to data-intensive workflow style computations? Are they ready for BigData? How many cloud instances can run them without significant faults or performance degradation?
 
 -- Persistence
-Can the data be persisted in the system beyond a single run? Beyond the lifecycle of a VM?
+Can the data be persisted in the system beyond a single run? Beyond the lifecycle of a VM? "Persistent aggregation of Storage Infrastructure", This is an idea proposed by Mike a while ago. We push data to the /scratch or dev/shm of a large system. We aggregate it via one of the storage solutions: Chirp, Mosa, HDFS. We let it stay there for a longer term and allow users to do multiple non-continuous analyses on that data over time.
 
 -- Cost and Prediction
 Comment about the savings in terms of monetary costs under different conditions. Model the experiments to give a prediction of cost ahead of time for experiments.
+
+-- The cloud storage pyramid. Elaborate and expand. Could be quite informative.
 
 -- Package and Release
 Package the system as a reusable cloud image and release it for users. The image would contain preinstalled, configured software tools (Swift T, K, Mosa, Fusion, HDFS, code for analysis, logging etc.) and application examples that others might find useful. Users can use any of the available combinations for their situation and requirements. With this, make a case for reuse and reproducibility of the work.
@@ -890,3 +892,7 @@ A scheme and related development/implementation to push subsequent updates to so
 
 -- Can this scenario be called RaaS? Resource as a service?
 
+-- "Cloud provisioning from spot market", My recent work of cloud resource provisioning. A user can attach/detach cloud resources to a running application from spot market. This will also address the cost concern of cloud systems, as commented by a reviewer.
+-- Provisioned IOPS? Find more about this.
+-- network weather on the global backbone
+-- Data management in the cloud is a hot research topic.
