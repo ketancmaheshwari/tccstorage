@@ -896,3 +896,92 @@ A scheme and related development/implementation to push subsequent updates to so
 -- Provisioned IOPS? Find more about this.
 -- network weather on the global backbone
 -- Data management in the cloud is a hot research topic.
+
+
+==Experiments Description==
+
+Aim: To obtain a detailed understanding of data movements and metadata changes over a set of cloud instances for a given storage system working in conjunction with a workflow encoded application execution.
+
+Statement: Run a workflow using Swift with S3, Mosa and FusionFS each over a set number of cloud instances for a set workflow I/O profile.
+
+1. Workflow: Skeleton generated synthetic workflow (essentially a DAG). 5
+stages, one branch. Each stage has between 10 and 100 tasks with a total of 500
+computationally medium intensive tasks. Stages produce and consume data
+arbitrarily. Approximately between 100 and 1000 MB of I/O per workflow run.
+
+2. Swift: Run with SwiftK with explicit data movement over locally hosted data
+and with SwiftT with implicit data movement over storage system hosted data.
+Logging enabled.
+
+3. S3: Run S3 in remote and mounted with fuse mode. Enable full Fuse logging.
+
+4. Mosa and FusionFS: Run'em in full logging mode with default configuration.
+
+5. Cloud instances: Run over 20 and 40 cloud instances (2 regions) of type
+medium : 2 core 10G+ memory instances. Need to work out the cost.
+
+
+Assuming a hypothetical commandline controlling experiment parameters, we will
+have the following 8 sets of experiments with 5 runs in each resulting in a
+grand total of 40 runs.
+
+runexp swiftK --datasize=100m  --cloudinstances=20 --storagesystem=none #baseline distributed workflow execution, classic Swift, no storage system, job and data distribution is done by Swift.
+runexp swiftK --datasize=200m  --cloudinstances=20 --storagesystem=none 
+runexp swiftK --datasize=500m  --cloudinstances=20 --storagesystem=none
+runexp swiftK --datasize=750m  --cloudinstances=20 --storagesystem=none
+runexp swiftK --datasize=1000m --cloudinstances=20 --storagesystem=none
+
+runexp swiftK --datasize=100m  --cloudinstances=40 --storagesystem=none #cloud instances across two regions with explicit staging
+runexp swiftK --datasize=200m  --cloudinstances=40 --storagesystem=none
+runexp swiftK --datasize=500m  --cloudinstances=40 --storagesystem=none
+runexp swiftK --datasize=750m  --cloudinstances=40 --storagesystem=none
+runexp swiftK --datasize=1000m --cloudinstances=40 --storagesystem=none
+
+
+runexp swiftT --datasize=100m  --cloudinstances=20 --storagesystem=s3fs #S3 as mounted FS via FUSE, one region, implicit staging
+runexp swiftT --datasize=200m  --cloudinstances=20 --storagesystem=s3fs
+runexp swiftT --datasize=500m  --cloudinstances=20 --storagesystem=s3fs
+runexp swiftT --datasize=750m  --cloudinstances=20 --storagesystem=s3fs
+runexp swiftT --datasize=1000m --cloudinstances=20 --storagesystem=s3fs
+
+runexp swiftT --datasize=100m  --cloudinstances=40 --storagesystem=s3fs #S3 as mounted FS via FUSE, two regions, implicit staging
+runexp swiftT --datasize=200m  --cloudinstances=40 --storagesystem=s3fs
+runexp swiftT --datasize=500m  --cloudinstances=40 --storagesystem=s3fs
+runexp swiftT --datasize=750m  --cloudinstances=40 --storagesystem=s3fs
+runexp swiftT --datasize=1000m --cloudinstances=40 --storagesystem=s3fs
+
+
+runexp swiftT --datasize=100m  --cloudinstances=20 --storagesystem=mosa #same as above, except with mosa
+runexp swiftT --datasize=200m  --cloudinstances=20 --storagesystem=mosa
+runexp swiftT --datasize=500m  --cloudinstances=20 --storagesystem=mosa
+runexp swiftT --datasize=750m  --cloudinstances=20 --storagesystem=mosa
+runexp swiftT --datasize=1000m --cloudinstances=20 --storagesystem=mosa
+
+runexp swiftT --datasize=100m  --cloudinstances=40 --storagesystem=mosa
+runexp swiftT --datasize=200m  --cloudinstances=40 --storagesystem=mosa
+runexp swiftT --datasize=500m  --cloudinstances=40 --storagesystem=mosa
+runexp swiftT --datasize=750m  --cloudinstances=40 --storagesystem=mosa
+runexp swiftT --datasize=1000m --cloudinstances=40 --storagesystem=mosa
+
+
+runexp swiftT --datasize=100m  --cloudinstances=20 --storagesystem=fusion #same as above, except with fusion
+runexp swiftT --datasize=200m  --cloudinstances=20 --storagesystem=fusion
+runexp swiftT --datasize=500m  --cloudinstances=20 --storagesystem=fusion
+runexp swiftT --datasize=750m  --cloudinstances=20 --storagesystem=fusion
+runexp swiftT --datasize=1000m --cloudinstances=20 --storagesystem=fusion
+
+runexp swiftT --datasize=100m  --cloudinstances=40 --storagesystem=fusion
+runexp swiftT --datasize=200m  --cloudinstances=40 --storagesystem=fusion
+runexp swiftT --datasize=500m  --cloudinstances=40 --storagesystem=fusion
+runexp swiftT --datasize=750m  --cloudinstances=40 --storagesystem=fusion
+runexp swiftT --datasize=1000m --cloudinstances=40 --storagesystem=fusion
+
+I propose the 10 runs corresponding to mosa and fusion be carried out by Hao
+and Dongfang respectively. I can do the rest of the runs. I can work with Zhao
+to build the synthetic workflow from his skeleton generation framework. Since
+we will be working on identical cloud instances on same zones with servers etc
+running within cloud, it nearly guarantees a uniform experimental environment
+minimizing the chances of errors. We exchange log information after a first run
+(pilot run) in each set and make sure we are in the same ballpark in terms of
+general configuration etc.
+
