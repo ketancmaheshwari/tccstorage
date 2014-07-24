@@ -2,17 +2,17 @@
 #set -x
 
 # 1. create two random matrices
-#HA=100
-#WA=200
-#WB=300
+HA=100
+WA=200
+WB=300
 
 #HA=2544
 #WA=3300 # generates 8M matrix
 #WB=3300
 
-HA=$1
-WA=$2
-WB=$3
+#HA=$1
+#WA=$2
+#WB=$3
 
 mA_file=mA.dat
 mB_file=mB.dat

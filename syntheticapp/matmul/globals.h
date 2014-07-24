@@ -12,7 +12,6 @@ ssize_t safeRead(int fd, void *buf, size_t count, const char* marker);
 ssize_t safeWrite(int fd, const void *buf, size_t count, const char* marker);
 void iotime();
 
-
 float* loadMatrix(const char* filename, size_t height, size_t width);
 float* saveMatrix(const char* filename, float* buf, size_t height, size_t width);
 

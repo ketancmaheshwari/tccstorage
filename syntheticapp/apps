@@ -1,9 +1,9 @@
 localhost simulate simulate.sh
-localhost matrixgen wgendata
-localhost mulmat    wmatrixMul
-localhost scale     wscale
-localhost sum       wsum
-localhost triad     wtriad
+localhost matrixgen gendata
+localhost mulmat    matrixMul
+localhost scale     scale
+localhost sum       sum
+localhost triad     triad
 localhost bulksum   bulksum
 localhost scalentriad     scalentriad
 blues simulate simulate.sh
