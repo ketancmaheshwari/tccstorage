@@ -20,17 +20,9 @@ app (file _matrixres, file _out, file _err) triad (int _size, file _matrixa, fil
   triad _size @_matrixa @_matrixb @_matrixres _coeff stdout=@_out stderr=@_err;
 }
 
-#HA=100
-#WA=200
-#WB=300
-
-#int HA=3300;
-#int WA=3300; # generates 8M matrix
-#int WB=3300;
-
-int HA=100;
-int WA=200; # basic
-int WB=300;
+int HA=2544;
+int WA=3300; # generates 8M matrix
+int WB=3300;
 
 int mul=HA * WB;
 float coeffa=0.5;
