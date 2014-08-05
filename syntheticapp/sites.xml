@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://www.ci.uchicago.edu/swift/SwiftSites">
-   <pool handle="localhost">
-      <execution provider="local" />
-      <profile namespace="karajan" key="jobThrottle">0.07</profile>
-      <profile namespace="karajan" key="initialScore">10000</profile>
-      <filesystem provider="local"/>
-      <workdirectory>/tmp/swift.work</workdirectory>
-      <profile namespace="swift" key="stagingMethod">local</profile>
-   </pool>
+<config>
+  <pool handle="persistent-coasters">
+    <execution provider="coaster-persistent"
+               url="http://localhost:50200"
+               jobmanager="local:local"/>
+    <profile namespace="globus" key="workerManager">passive</profile>
+    <profile namespace="globus" key="jobsPerNode">4</profile>
+    <profile key="jobThrottle" namespace="karajan">.19999</profile>
+    <profile namespace="karajan" key="initialScore">10000</profile>
+    <filesystem provider="local" url="none" />
+    <workdirectory>/tmp/ketan</workdirectory>
+  </pool>
 </config>

@@ -1,9 +1,6 @@
+use.provider.staging=true
 wrapperlog.always.transfer=false
-sitedir.keep=true
-file.gc.enabled=false
-status.mode=provider
-execution.retries=0
-lazy.errors=false
-use.provider.staging=false
-provider.staging.pin.swiftfiles=true
+execution.retries=10
+provider.staging.pin.swiftfiles=false
+sitedir.keep=false
 use.wrapper.staging=false
