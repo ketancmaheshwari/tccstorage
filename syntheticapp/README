@@ -8,3 +8,12 @@ stream_sum, stream_scale, and stream_triad are three STREAM benchmarks, they eac
     SUM:        a(i) = b(i) + c(i)          
     TRIAD:      a(i) = b(i) + q*c(i)        
 
+Cloud
+
+Set the environment variables in coaster-service.conf. Start coaster service:
+
+start-coaster-service
+
+Run:
+
+
